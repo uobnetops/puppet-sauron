@@ -1,0 +1,14 @@
+{
+  "name": "uobnetops-sauron",
+  "version": "0.1.0",
+  "author": "University of Bristol Network Operations Team",
+  "summary": "Deploy and manage the sauron DNS/DHCP management system.  Sauron comes with a www and command-line interface.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/uobnetops/puppet-sauron",
+  "project_page": "https://github.com/uobnetops/puppet-sauron",
+  "issues_url": "https://github.com/uobnetops/puppet-sauron/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
