@@ -24,6 +24,82 @@
 #   boolean to control whether we manage firewall or not, requires puppetlabs/firewall
 #   Defaults to true
 #
+#
+# [*log_dir*]
+#   Destination log directory for sauron application logs
+#
+# [*server_id*]
+#   unique server ID (if using multiple www-servers)
+#
+# [*db_dsn*]
+#   DNS that describes the postgres backend
+#
+# [*db_user*]
+#   database username
+#
+# [*db_password*]
+#   database password
+#
+# [*sauron_ping*]
+#   ping command in web interface.  Takes a hash with the following defaults
+#   $sauron_ping = {
+#    enable    = false,        # Default is disable ping in the web interface
+#    prog      = '/bin/ping',  # path to ping
+#    args      = '-c5',        # arguments to pass to ping
+#    timeout   = '15',         # timeout
+#    alevel    = '1',          # authorization level required for the user to be able to ping
+#  }
+#
+# [*sauron_named_chk*]
+#   Parameters for checking generated named.conf after export
+#   $sauron_named_chk = {
+#     enable => false,                       # Default is to disable named-checkconf
+#     prog   => '/usr/sbin/named-checkconf', # path to named-checkconf
+#     args   => '',                          # additional arguments to use
+#   }
+#
+# [*sauron_zone_chk*]
+#   Parameters for checking generated zone files after export
+#   $sauron_zone_chk = {
+#     enable => false,                       # Default is to disable named-checkzone
+#     prog   => '/usr/sbin/named-checkzone', # path to named-checkzone
+#     args   => '-q',                        # additional arguments to use
+#   }
+#
+# [*sauron_auth_prog*]
+#   Path to an external authentication program, if required
+#
+# [*sauron_icon_path*]
+#   Path to the icons for the web interface, relative to the web root
+#
+# [*sauron_user_timeout*]
+#   Session time out for users
+#
+# [*sauron_privilege_mode*]
+#   Set this to enable more restrictive user privilege intepretation.
+#   1 = zone read (write) access is not inherited from server privileges
+#       (user sees only zones she has explicitly given read (write) access)
+#
+# [*sauron_fgcolor*]
+#   Foreground colour for the web interface
+#
+# [*sauron_bgcolor*]
+#   Background colour for the web interface
+#
+#  # restricted host form field defaults: 0=required, 1=optional
+# [*sauron_rhf*]
+#    huser    => '0',
+#    dept     => '0',
+#    location => '0',
+#    info     => '1',
+#    ether    => '0',
+#    asset_id => '1',
+#    model    => '1',
+#    serial   => '1',
+#    misc     => '1',
+#    email    => '1',
+#  }
+#
 # === Examples
 #
 #  class { 'sauron':
@@ -39,13 +115,27 @@
 # Copyright 2016 University of Bristol
 #
 class sauron (
-  $manage_postgres = $sauron::params::manage_postgres,
-  $manage_apache   = $sauron::params::manage_apache,
-  $manage_selinux  = $sauron::params::manage_selinux,
-  $manage_firewall = $sauron::params::manage_firewall,
-  $owner           = 'sauron',
-  $group           = 'sauron',
-  $version         = 'v0.7.4-uob',
+  $manage_postgres       = $sauron::params::manage_postgres,
+  $manage_apache         = $sauron::params::manage_apache,
+  $manage_selinux        = $sauron::params::manage_selinux,
+  $manage_firewall       = $sauron::params::manage_firewall,
+  $owner                 = 'sauron',
+  $group                 = 'sauron',
+  $version               = 'v0.7.4-uob',
+  $log_dir               = $sauron::params::log_dir,
+  $server_id             = $sauron::params::server_id 
+  $db_user               = $sauron::params::db_user,
+  $db_password           = $sauron::params::db_password,
+  $sauron_ping           = $sauron::params::sauron_ping,
+  $sauron_named_chk      = $sauron::params::sauron_named_chk,
+  $sauron_zone_chk       = $sauron::params::sauron_zone_chk,
+  $sauron_auth_prog      = $sauron::params::sauron_auth_prog,
+  $sauron_icon_path      = $sauron::params::sauron_icon_path,
+  $sauron_user_timeout   = $sauron::params::sauron_user_timeout,
+  $sauron_privilege_mode = $sauron::params::sauron_privilege_mode,
+  $sauron_fgcolor        = $sauron::params::sauron_fgcolor,
+  $sauron_bgcolor        = $sauron::params::sauron_bgcolor,
+  $sauron_rhf            = $sauron::params::sauron_rhf,
 ) inherits sauron::params {
 
   # Configure postgres - TODO
