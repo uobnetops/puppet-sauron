@@ -63,7 +63,20 @@ class sauron (
 
   # Deploy sauron to /usr/share/sauron - TODO (initially use vcs repo)
 
-  # Build /etc/sauron/config from template - TODO
+  # Make sure the config directory exists
+  file { '/etc/sauron':
+    ensure => directory,
+  }
 
-  # Build /etc/sauron/config-browser from template - TODO
+  # Build /etc/sauron/config from template
+  file { '/etc/sauron/config':
+    ensure  => file,
+    content => template('sauron/config.erb'),
+  }
+
+  # Build /etc/sauron/config-browser from template
+  file { '/etc/sauron/config-browser':
+    ensure  => file,
+    content => template('sauron/config-browser.erb'),
+  }
 }
