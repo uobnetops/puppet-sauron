@@ -1,6 +1,10 @@
 # == Class: sauron
 #
-# Full description of class sauron here.
+# Install and manage the Sauron DNS/DHCP management software, initially developed by jyu.fi
+# and available from http://www.sauron-dns.jyu.fi/
+#
+# This module specifically manages the version of Sauron maintained by the University of Bristol
+# which can be found here: https://github.com/uobnetops/sauron6
 #
 # === Parameters
 #
@@ -29,13 +33,25 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Paul Seward <paul.seward@bristol.ac.uk>
 #
 # === Copyright
 #
-# Copyright 2016 Your name here, unless otherwise noted.
+# Copyright 2016 University of Bristol
 #
 class sauron {
 
+  # Configure postgres - TODO (use a boolean to control this)
 
+  # Configure apache - TODO (use a boolean to control this)
+
+  # Configure SELinux - TODO (use a boolean to control this, and only on redhat)
+
+  # Configure firewall - TODO (use a boolean to control this)
+
+  # Deploy sauron to /usr/share/sauron - TODO (initially use vcs repo)
+
+  # Build /etc/sauron/config from template - TODO
+
+  # Build /etc/sauron/config-browser from template - TODO
 }
