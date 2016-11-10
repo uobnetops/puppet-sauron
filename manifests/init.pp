@@ -43,6 +43,9 @@ class sauron (
   $manage_apache   = $sauron::params::manage_apache,
   $manage_selinux  = $sauron::params::manage_selinux,
   $manage_firewall = $sauron::params::manage_firewall,
+  $owner           = 'sauron',
+  $group           = 'sauron',
+  $version         = 'v0.7.4-uob',
 ) inherits sauron::params {
 
   # Configure postgres - TODO
@@ -61,7 +64,28 @@ class sauron (
   if ($manage_firewall) {
   }
 
-  # Deploy sauron to /usr/share/sauron - TODO (initially use vcs repo)
+  # Make sure the $owner and $group exist
+  user { 'sauron_user':
+    name    => $owner,
+    ensure  => present,
+    comment => 'User for sauron DNS management',
+    groups  => [$group],
+  }
+  group { 'sauron_group':
+    name   => $group,
+    ensure => present,
+  }
+
+  # Deploy sauron to /usr/share/sauron
+    vcsrepo { '/usr/share/sauron':
+    ensure   => latest,
+    revision => $version,
+    path     => '/usr/share/sauron',
+    provider => git,
+    source   => 'https://github.com/uobnetops/sauron6.git',
+    owner    => $owner,
+    group    => $group,
+  }
 
   # Make sure the config directory exists
   file { '/etc/sauron':
