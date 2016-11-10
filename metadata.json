@@ -8,7 +8,12 @@
   "project_page": "https://github.com/uobnetops/puppet-sauron",
   "issues_url": "https://github.com/uobnetops/puppet-sauron/issues",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
+    {"name":"puppetlabs/vcsrepo","version_requirement":">= 1.3.2"}
+    {"name":"puppetlabs/apache","version_requirement":">= 1.10.0"}
+    {"name":"puppetlabs/postgresql","version_requirement":">= 4.7.1"}
+    {"name":"puppetlabs/firewall","version_requirement":">= 1.8.1"}
+    {"name":"jfryman/selinux","version_requirement":">= 0.4.0"}
   ]
 }
 
