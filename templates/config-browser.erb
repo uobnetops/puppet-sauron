@@ -1,0 +1,65 @@
+#
+# Sample browser.cgi configuration file
+#
+# $Id: config-browser.in,v 1.6 2003/12/28 19:29:11 tjko Exp $
+#
+
+#########################################################################
+# general configuration options
+
+# base directory for Sauron install
+$PROG_DIR = "/usr/local/sauron/";
+
+########################################################################
+# database connection setup
+
+# for DBI backend (see DBD::Pg module docs for more info on parameters)
+#$DB_DSN = "dbi:Pg:dbname=sauron;host=localhost;port=5432";
+$DB_DSN = "dbi:Pg:dbname=sauron";
+
+# for old Pg backend (see Pg modules docs for more info on parameters)
+#$DB_DSN = "dbname=sauron host=localhost port=5432";
+#$DB_DSN = "dbname=sauron";
+
+# database user
+$DB_USER = "foo";
+# database (user) password
+$DB_PASSWORD = "bar";
+
+
+# define which zones are available to browse and via which path
+# under browser.cgi (for example foo --> http://host/cgi-bin/browser.cgi/foo/)
+$BROWSER_CONF = { 
+		  foo=>['servername','zonename'], 
+	          foo2=>['server1','zone2.orgg'] 
+		};
+
+# optional "help" link to display for each browser zone
+$BROWSER_HELP = { 
+		  foo=>['Help','http://www.zone2.orgg/browserhelp.thml'] ,
+		  foo2=>['Info','/browserhelp.thml'] 
+		};
+
+#########################################################################
+# advanced browser configuratio options
+
+# maximum number of matches to display
+# $BROWSER_MAX = 100;
+
+# specify charset for CGI interface (default is iso-8859-1)
+# $BROWSER_CHARSET = 'iso-8859-15';
+
+# specify which fields info fields to display 
+# $BROWSER_SHOW_FIELDS = 'huser,location,info,dept';
+
+# completely hide hosts from networks with private flag
+# $BROWSER_HIDE_PRIVATE = 1;
+
+# fields to hide from hosts in networks with private flag
+# (meaningful only if BROWSER_HIDE_PRIVATE=0)
+# $BROWSER_HIDE_FIELDS = 'huser,location';
+
+1;
+# eof
+
+
