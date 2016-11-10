@@ -8,22 +8,21 @@
 #
 # === Parameters
 #
-# Document parameters here.
+# [*manage_postgres*]
+#   boolean to control whether we manage postgres or not, requires puppetlabs/postgresql
+#   Defaults to true
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*manage_apache*]
+#   boolean to control whether we manage apache or not, requires puppetlabs/apache
+#   Defaults to true
 #
-# === Variables
+# [*manage_selinux*]
+#   boolean to control whether we manage SELinux or not, requires jfryman/selinux
+#   Defaults to true on Redhat derived distributions
 #
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# [*manage_firewall*]
+#   boolean to control whether we manage firewall or not, requires puppetlabs/firewall
+#   Defaults to true
 #
 # === Examples
 #
@@ -39,15 +38,28 @@
 #
 # Copyright 2016 University of Bristol
 #
-class sauron {
+class sauron (
+  $manage_postgres = $sauron::params::manage_postgres,
+  $manage_apache   = $sauron::params::manage_apache,
+  $manage_selinux  = $sauron::params::manage_selinux,
+  $manage_firewall = $sauron::params::manage_firewall,
+) inherits sauron::params {
 
-  # Configure postgres - TODO (use a boolean to control this)
+  # Configure postgres - TODO
+  if ($manage_postgres) {
+  }
 
-  # Configure apache - TODO (use a boolean to control this)
+  # Configure apache - TODO
+  if ($manage_apache) {
+  }
 
-  # Configure SELinux - TODO (use a boolean to control this, and only on redhat)
+  # Configure SELinux - TODO (manage_selinux defaults to true for RedHat/Fedora)
+  if ($manage_selinux) {
+  }
 
-  # Configure firewall - TODO (use a boolean to control this)
+  # Configure firewall - TODO
+  if ($manage_firewall) {
+  }
 
   # Deploy sauron to /usr/share/sauron - TODO (initially use vcs repo)
 
