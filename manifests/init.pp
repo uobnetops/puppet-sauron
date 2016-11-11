@@ -148,14 +148,17 @@ class sauron (
 
   # Configure postgres - TODO
   if ($manage_postgres) {
+    info "postgres"
   }
 
   # Configure apache - TODO
   if ($manage_apache) {
+    info "apache"
   }
 
   # Configure SELinux - TODO (manage_selinux defaults to true for RedHat/Fedora)
   if ($manage_selinux) {
+    info "selinux"
   }
 
   # Configure firewall - TODO
