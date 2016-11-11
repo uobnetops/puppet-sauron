@@ -40,11 +40,11 @@ class params {
   $db_password           = '',
   
   $sauron_ping = {
-    enable    = false,
-    prog      = '/bin/ping',
-    args      = '-c5',
-    timeout   = '15',
-    alevel    = '1',
+    enable    => false,
+    prog      => '/bin/ping',
+    args      => '-c5',
+    timeout   => '15',
+    alevel    => '1',
   }
 
   $sauron_named_chk = {
