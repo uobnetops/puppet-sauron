@@ -28,6 +28,9 @@
 #   requires puppetlabs/firewall
 #   Defaults to true
 #
+# [*utils_package*]
+#   list of packages to install, to support named-checkzone etc.  Default
+#   is selected in params.pp based on the OS
 #
 # [*log_dir*]
 #   Destination log directory for sauron application logs
@@ -197,4 +200,13 @@ class sauron (
     ensure  => file,
     content => template('sauron/config-browser.erb'),
   }
+
+  # Install supporting packages, if we need them
+  if ($sauron_named_chk[enable] or $sauron_zone_chk[enable]) {
+    package { $utils_package:
+      ensure => latest,
+    }
+  }
+}
+  
 }

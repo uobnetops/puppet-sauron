@@ -5,15 +5,19 @@ class params {
   case $::operatingsystem {
     /RedHat|CentOS/: {
       $manage_selinux = true
+      $utils_package  = ['bind']
     }
     'Fedora': {
       $manage_selinux = true
+      $utils_package  = ['bind']
     }
     'Debian': {
       $manage_selinux = false
+      $utils_package  = ['bind9utils']
     }
     'Ubuntu': {
       $manage_selinux = false
+      $utils_package  = ['bind9utils']
     }
     default: {
       $manage_selinux = false
