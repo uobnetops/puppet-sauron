@@ -43,10 +43,12 @@ $DB_PASSWORD = "<%= @db_password %>";
 # $SAURON_MAIL_FROM = 'postmaster@somedomain'; 
 
 # set to enable ping command in web interface
-# $SAURON_PING_PROG = '/bin/ping';
-# $SAURON_PING_ARGS = '-c5';  
-# $SAURON_PING_TIMEOUT = '15';  
-# $ALEVEL_PING = 1;  # authorization level needed to use ping
+<% if @sauron_ping[enable] -%>
+# $SAURON_PING_PROG = '<% @sauron_ping[prog] %>';
+# $SAURON_PING_ARGS = '<% @sauron_ping[args] %>';  
+# $SAURON_PING_TIMEOUT = '<% @sauron_ping[timeout] %>';  
+# $ALEVEL_PING = <% @sauron_ping[alevel] %>;  # authorization level needed to use ping
+<% end -%>
 
 # set to enable ping sweeps from web interface using nmap
 # $SAURON_NMAP_PROG = '/usr/bin/nmap';
