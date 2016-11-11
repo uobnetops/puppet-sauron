@@ -68,12 +68,16 @@ $DB_PASSWORD = "<%= @db_password %>";
 # $SAURON_DHCP_CHK_ARGS = '-q -t -cf';
 
 # set to enable named.conf validation from sauron
-# $SAURON_NAMED_CHK_PROG = '/usr/sbin/named-checkconf';
-# $SAURON_NAMED_CHK_ARGS = '';
+<% if @sauron_named_chk['enable'] -%>
+$SAURON_NAMED_CHK_PROG = '<% @sauron_named_chk['prog'] %>';
+$SAURON_NAMED_CHK_ARGS = '<% @sauron_named_chk['args'] %>';
+<% end -%>
 
 # set to enable zone file validation from sauron
-# $SAURON_ZONE_CHK_PROG = '/usr/sbin/named-checkzone';
-# $SAURON_ZONE_CHK_ARGS = '-q';
+<% if @sauron_zone_chk['enable'] -%>
+# $SAURON_ZONE_CHK_PROG = '<% @sauron_zone_chk['prog'] %>';
+# $SAURON_ZONE_CHK_ARGS = '<% @sauron_zone_chk['args'] %>';
+<% end -%>
 
 # set to enable TSIG/DNSSEC key generation
 # $SAURON_DNSSEC_KEYGEN_PROG = '/usr/sbin/dnssec-keygen';
@@ -110,17 +114,23 @@ $DB_PASSWORD = "<%= @db_password %>";
 #   0 = successful authnentication
 #   <nonzero> = failed (wrong password)
 #
-# $SAURON_AUTH_PROG = "$PROG_DIR/contrib/kerberos-auth";
+<% if @sauron_auth_prog -%>
+$SAURON_AUTH_PROG = "<% @sauron_auth_prog %>";
+<% end -%>
 
 #########################################################################
 # WWW interface (sauron.cgi) configuration options 
 
 
 # icon path for sauron icons (under www-server)
-# $SAURON_ICON_PATH = "/sauron/icons";
+<% if @sauron_icon_path -%>
+$SAURON_ICON_PATH = "<% @sauron_icon_path %>";
+<% end -%>
 
 # idle timeout for user sessions (in seconds)
-# $SAURON_USER_TIMEOUT = 3600;
+<% if @sauron_user_timeout -%>
+$SAURON_USER_TIMEOUT = <% @sauron_user_timeout %>;
+<% end -%>
 
 # authorization level needed to see vlan info in web interface
 # $ALEVEL_VLANS = 5;
@@ -144,16 +154,16 @@ $DB_PASSWORD = "<%= @db_password %>";
 # $SAURON_NO_REMOTE_ADDR_AUTH = 1;
 
 # restricted host form field defaults: 0=required, 1=optional
-# $SAURON_RHF{huser}    = 0; # User
-# $SAURON_RHF{dept}     = 0; # Dept.
-# $SAURON_RHF{location} = 0; # Location
-# $SAURON_RHF{info}     = 1; # [Extra] Info
-# $SAURON_RHF{ether}    = 0; # Ether
-# $SAURON_RHF{asset_id} = 1; # Asset ID
-# $SAURON_RHF{model}    = 1; # Model
-# $SAURON_RHF{serial}   = 1; # Serial
-# $SAURON_RHF{misc}     = 1; # Misc.
-# $SAURON_RHF{email}    = 1; # User Email
+$SAURON_RHF{huser}    = <% @sauron_rhf['user'] %>; # User
+$SAURON_RHF{dept}     = <% @sauron_rhf['dept'] %>; # Dept.
+$SAURON_RHF{location} = <% @sauron_rhf['location'] %>; # Location
+$SAURON_RHF{info}     = <% @sauron_rhf['info'] %>; # [Extra] Info
+$SAURON_RHF{ether}    = <% @sauron_rhf['ether'] %>; # Ether
+$SAURON_RHF{asset_id} = <% @sauron_rhf['asset_id'] %>; # Asset ID
+$SAURON_RHF{model}    = <% @sauron_rhf['model'] %>; # Model
+$SAURON_RHF{serial}   = <% @sauron_rhf['serial'] %>; # Serial
+$SAURON_RHF{misc}     = <% @sauron_rhf['misc'] %>; # Misc.
+$SAURON_RHF{email}    = <% @sauron_rhf['email'] %>; # User Email
 
 # Optional custom restictions for host record fields. 
 # Restrictions can be defined by server and for each
@@ -178,7 +188,9 @@ $DB_PASSWORD = "<%= @db_password %>";
 # Set this to enable more restrictive user privilege intepretation.
 #  1 = zone read (write) access is not inherited from server privileges
 #      (user sees only zones she has explicitly given read (write) access)
-# $SAURON_PRIVILEGE_MODE = 1
+<% if @sauron_priviledge_mode -%>
+$SAURON_PRIVILEGE_MODE = <% @sauron_priviledge_mode %>
+<% end -%>
 
 # set 1 to use hardcoded DTD instead the one genereated by CGI module
 # $SAURON_DTD_HACK = 0;
@@ -205,8 +217,12 @@ $DB_PASSWORD = "<%= @db_password %>";
 # uncomment to enable compatibilty with DHCP v2.0 ...
 # $SAURON_DCHP2_MODE = 1;
 
-# $SAURON_BGCOLOR="white";
-# $SAURON_FGCOLOR="black";
+<% if @sauron_bgcolor -%>
+$SAURON_BGCOLOR="<% @sauron_bgcolor %>";
+<% end -%>
+<% if @sauron_fgcolor -%>
+$SAURON_FGCOLOR="<% @sauron_fgcolor %>";
+<% end -%>
 
 # $LOOPBACK_NET = "127.0.0.0/24";
 # $LOOPBACK_ZONE = "loopback.";
