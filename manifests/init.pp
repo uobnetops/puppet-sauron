@@ -1,27 +1,31 @@
 # == Class: sauron
 #
-# Install and manage the Sauron DNS/DHCP management software, initially developed by jyu.fi
-# and available from http://www.sauron-dns.jyu.fi/
+# Install and manage the Sauron DNS/DHCP management software, initially
+# developed by jyu.fi and available from http://www.sauron-dns.jyu.fi/
 #
-# This module specifically manages the version of Sauron maintained by the University of Bristol
-# which can be found here: https://github.com/uobnetops/sauron6
+# This module specifically manages the version of Sauron maintained by the
+# University of Bristol available from https://github.com/uobnetops/sauron6
 #
 # === Parameters
 #
 # [*manage_postgres*]
-#   boolean to control whether we manage postgres or not, requires puppetlabs/postgresql
+#   boolean to control whether we manage postgres or not
+#   requires puppetlabs/postgresql
 #   Defaults to true
 #
 # [*manage_apache*]
-#   boolean to control whether we manage apache or not, requires puppetlabs/apache
+#   boolean to control whether we manage apache or not
+#   requires puppetlabs/apache
 #   Defaults to true
 #
 # [*manage_selinux*]
-#   boolean to control whether we manage SELinux or not, requires jfryman/selinux
+#   boolean to control whether we manage SELinux or not
+#   requires jfryman/selinux
 #   Defaults to true on Redhat derived distributions
 #
 # [*manage_firewall*]
-#   boolean to control whether we manage firewall or not, requires puppetlabs/firewall
+#   boolean to control whether we manage firewall or not
+#   requires puppetlabs/firewall
 #   Defaults to true
 #
 #
@@ -47,13 +51,13 @@
 #    prog      = '/bin/ping',  # path to ping
 #    args      = '-c5',        # arguments to pass to ping
 #    timeout   = '15',         # timeout
-#    alevel    = '1',          # authorization level required for the user to be able to ping
+#    alevel    = '1',          # user authorization level required for ping
 #  }
 #
 # [*sauron_named_chk*]
 #   Parameters for checking generated named.conf after export
 #   $sauron_named_chk = {
-#     enable => false,                       # Default is to disable named-checkconf
+#     enable => false,                       # Default named-checkconf disabled
 #     prog   => '/usr/sbin/named-checkconf', # path to named-checkconf
 #     args   => '',                          # additional arguments to use
 #   }
@@ -61,7 +65,7 @@
 # [*sauron_zone_chk*]
 #   Parameters for checking generated zone files after export
 #   $sauron_zone_chk = {
-#     enable => false,                       # Default is to disable named-checkzone
+#     enable => false,                       # Default named-checkzone disabled
 #     prog   => '/usr/sbin/named-checkzone', # path to named-checkzone
 #     args   => '-q',                        # additional arguments to use
 #   }
@@ -123,7 +127,7 @@ class sauron (
   $group                 = 'sauron',
   $version               = 'v0.7.4-uob',
   $log_dir               = $sauron::params::log_dir,
-  $server_id             = $sauron::params::server_id 
+  $server_id             = $sauron::params::server_id,
   $db_user               = $sauron::params::db_user,
   $db_password           = $sauron::params::db_password,
   $sauron_ping           = $sauron::params::sauron_ping,
@@ -156,14 +160,14 @@ class sauron (
 
   # Make sure the $owner and $group exist
   user { 'sauron_user':
-    name    => $owner,
     ensure  => present,
+    name    => $owner,
     comment => 'User for sauron DNS management',
     groups  => [$group],
   }
   group { 'sauron_group':
-    name   => $group,
     ensure => present,
+    name   => $group,
   }
 
   # Deploy sauron to /usr/share/sauron
