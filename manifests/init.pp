@@ -144,7 +144,7 @@ class sauron (
   $sauron_bgcolor        = $sauron::params::sauron_bgcolor,
   $sauron_rhf            = $sauron::params::sauron_rhf,
   $utils_package         = $sauron::params::utils_package,
-) inherits sauron::params {
+) inherits ::sauron::params {
 
   # Configure postgres - TODO
   if ($manage_postgres) {

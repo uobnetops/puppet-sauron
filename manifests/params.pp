@@ -1,5 +1,5 @@
 # Default parameters for Sauron
-class params {
+class sauron::params {
 
   # Distribution based defaults
   case $::operatingsystem {
