@@ -25,7 +25,7 @@ class params {
   }
 
   # Postgres defaults
-  manage_postgres = true
+  $manage_postgres = true
 
   # Apache defaults
   $manage_apache = true
