@@ -11,10 +11,10 @@
 $PROG_DIR = "/usr/local/sauron/";
 
 # directory for logfiles
-$LOG_DIR = "$PROG_DIR/logs/";
+$LOG_DIR = "<%= @log_dir %>";
 
 # unique server ID (if using multiple www-servers)
-$SERVER_ID = "fooserver";
+$SERVER_ID = "<%= @server_id %>";
 
 
 ########################################################################
@@ -22,16 +22,16 @@ $SERVER_ID = "fooserver";
 
 # for DBI backend (see DBD::Pg module docs for more info on parameters)
 #$DB_DSN = "dbi:Pg:dbname=sauron;host=localhost;port=5432";
-$DB_DSN = "dbi:Pg:dbname=sauron";
+$DB_DSN = "<%= @db_dsn %>";
 
 # for old Pg backend (see Pg modules docs for more info on parameters)
 #$DB_DSN = "dbname=sauron host=localhost port=5432";
 #$DB_DSN = "dbname=sauron";
 
 # database user
-$DB_USER = "foo";
+$DB_USER = "<%= @db_user %>";
 # database (user) password
-$DB_PASSWORD = "bar";
+$DB_PASSWORD = "<%= @db_password %>";
 
 
 #########################################################################

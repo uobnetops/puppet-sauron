@@ -131,6 +131,7 @@ class sauron (
   $version               = 'v0.7.4-uob',
   $log_dir               = $sauron::params::log_dir,
   $server_id             = $sauron::params::server_id,
+  $db_dsn                = $sauron::params::db_dsn,
   $db_user               = $sauron::params::db_user,
   $db_password           = $sauron::params::db_password,
   $sauron_ping           = $sauron::params::sauron_ping,

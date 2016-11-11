@@ -36,6 +36,7 @@ class sauron::params {
   # /etc/sauron/config parameters
   $log_dir               = '$PROG_DIR/logs/'
   $server_id             = 'sauron'
+  $db_dsn                = 'dbi:Pg:dbname=sauron'
   $db_user               = 'sauron'
   $db_password           = ''
   
