@@ -44,10 +44,10 @@ $DB_PASSWORD = "<%= @db_password %>";
 
 # set to enable ping command in web interface
 <% if @sauron_ping['enable'] -%>
-# $SAURON_PING_PROG = '<%= @sauron_ping['prog'] %>';
-# $SAURON_PING_ARGS = '<%= @sauron_ping['args'] %>';  
-# $SAURON_PING_TIMEOUT = '<%= @sauron_ping['timeout'] %>';  
-# $ALEVEL_PING = <%= @sauron_ping['alevel'] %>;  # authorization level needed to use ping
+$SAURON_PING_PROG = '<%= @sauron_ping['prog'] %>';
+$SAURON_PING_ARGS = '<%= @sauron_ping['args'] %>';  
+$SAURON_PING_TIMEOUT = '<%= @sauron_ping['timeout'] %>';  
+$ALEVEL_PING = <%= @sauron_ping['alevel'] %>;  # authorization level needed to use ping
 <% end -%>
 
 # set to enable ping sweeps from web interface using nmap
@@ -75,8 +75,8 @@ $SAURON_NAMED_CHK_ARGS = '<%= @sauron_named_chk['args'] %>';
 
 # set to enable zone file validation from sauron
 <% if @sauron_zone_chk['enable'] -%>
-# $SAURON_ZONE_CHK_PROG = '<%= @sauron_zone_chk['prog'] %>';
-# $SAURON_ZONE_CHK_ARGS = '<%= @sauron_zone_chk['args'] %>';
+$SAURON_ZONE_CHK_PROG = '<%= @sauron_zone_chk['prog'] %>';
+$SAURON_ZONE_CHK_ARGS = '<%= @sauron_zone_chk['args'] %>';
 <% end -%>
 
 # set to enable TSIG/DNSSEC key generation
