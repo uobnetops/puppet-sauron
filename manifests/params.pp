@@ -34,10 +34,10 @@ class params {
   $manage_firewall = true
 
   # /etc/sauron/config parameters
-  $log_dir               = '$PROG_DIR/logs/',
-  $server_id             = 'sauron',
-  $db_user               = 'sauron',
-  $db_password           = '',
+  $log_dir               = '$PROG_DIR/logs/'
+  $server_id             = 'sauron'
+  $db_user               = 'sauron'
+  $db_password           = ''
   
   $sauron_ping = {
     enable    => false,
@@ -59,12 +59,12 @@ class params {
     args   => '-q',
   }
 
-  $sauron_auth_prog      = '$PROG_DIR/contrib/kerberos-auth',
-  $sauron_icon_path      = '/sauron/icons',
-  $sauron_user_timeout   = '3600',
-  $sauron_privilege_mode = '1',
-  $sauron_fgcolor        = 'white',
-  $sauron_bgcolor        = 'black',
+  $sauron_auth_prog      = '$PROG_DIR/contrib/kerberos-auth'
+  $sauron_icon_path      = '/sauron/icons'
+  $sauron_user_timeout   = '3600'
+  $sauron_privilege_mode = '1'
+  $sauron_fgcolor        = 'white'
+  $sauron_bgcolor        = 'black'
 
   # restricted host form field defaults: 0=required, 1=optional
   $sauron_rhf = {
