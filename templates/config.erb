@@ -44,10 +44,10 @@ $DB_PASSWORD = "<%= @db_password %>";
 
 # set to enable ping command in web interface
 <% if @sauron_ping['enable'] -%>
-# $SAURON_PING_PROG = '<% @sauron_ping['prog'] %>';
-# $SAURON_PING_ARGS = '<% @sauron_ping['args'] %>';  
-# $SAURON_PING_TIMEOUT = '<% @sauron_ping['timeout'] %>';  
-# $ALEVEL_PING = <% @sauron_ping['alevel'] %>;  # authorization level needed to use ping
+# $SAURON_PING_PROG = '<%= @sauron_ping['prog'] %>';
+# $SAURON_PING_ARGS = '<%= @sauron_ping['args'] %>';  
+# $SAURON_PING_TIMEOUT = '<%= @sauron_ping['timeout'] %>';  
+# $ALEVEL_PING = <%= @sauron_ping['alevel'] %>;  # authorization level needed to use ping
 <% end -%>
 
 # set to enable ping sweeps from web interface using nmap
@@ -69,14 +69,14 @@ $DB_PASSWORD = "<%= @db_password %>";
 
 # set to enable named.conf validation from sauron
 <% if @sauron_named_chk['enable'] -%>
-$SAURON_NAMED_CHK_PROG = '<% @sauron_named_chk['prog'] %>';
-$SAURON_NAMED_CHK_ARGS = '<% @sauron_named_chk['args'] %>';
+$SAURON_NAMED_CHK_PROG = '<%= @sauron_named_chk['prog'] %>';
+$SAURON_NAMED_CHK_ARGS = '<%= @sauron_named_chk['args'] %>';
 <% end -%>
 
 # set to enable zone file validation from sauron
 <% if @sauron_zone_chk['enable'] -%>
-# $SAURON_ZONE_CHK_PROG = '<% @sauron_zone_chk['prog'] %>';
-# $SAURON_ZONE_CHK_ARGS = '<% @sauron_zone_chk['args'] %>';
+# $SAURON_ZONE_CHK_PROG = '<%= @sauron_zone_chk['prog'] %>';
+# $SAURON_ZONE_CHK_ARGS = '<%= @sauron_zone_chk['args'] %>';
 <% end -%>
 
 # set to enable TSIG/DNSSEC key generation
@@ -115,7 +115,7 @@ $SAURON_NAMED_CHK_ARGS = '<% @sauron_named_chk['args'] %>';
 #   <nonzero> = failed (wrong password)
 #
 <% if @sauron_auth_prog -%>
-$SAURON_AUTH_PROG = "<% @sauron_auth_prog %>";
+$SAURON_AUTH_PROG = "<%= @sauron_auth_prog %>";
 <% end -%>
 
 #########################################################################
@@ -124,12 +124,12 @@ $SAURON_AUTH_PROG = "<% @sauron_auth_prog %>";
 
 # icon path for sauron icons (under www-server)
 <% if @sauron_icon_path -%>
-$SAURON_ICON_PATH = "<% @sauron_icon_path %>";
+$SAURON_ICON_PATH = "<%= @sauron_icon_path %>";
 <% end -%>
 
 # idle timeout for user sessions (in seconds)
 <% if @sauron_user_timeout -%>
-$SAURON_USER_TIMEOUT = <% @sauron_user_timeout %>;
+$SAURON_USER_TIMEOUT = <%= @sauron_user_timeout %>;
 <% end -%>
 
 # authorization level needed to see vlan info in web interface
@@ -154,16 +154,16 @@ $SAURON_USER_TIMEOUT = <% @sauron_user_timeout %>;
 # $SAURON_NO_REMOTE_ADDR_AUTH = 1;
 
 # restricted host form field defaults: 0=required, 1=optional
-$SAURON_RHF{huser}    = <% @sauron_rhf['user'] %>; # User
-$SAURON_RHF{dept}     = <% @sauron_rhf['dept'] %>; # Dept.
-$SAURON_RHF{location} = <% @sauron_rhf['location'] %>; # Location
-$SAURON_RHF{info}     = <% @sauron_rhf['info'] %>; # [Extra] Info
-$SAURON_RHF{ether}    = <% @sauron_rhf['ether'] %>; # Ether
-$SAURON_RHF{asset_id} = <% @sauron_rhf['asset_id'] %>; # Asset ID
-$SAURON_RHF{model}    = <% @sauron_rhf['model'] %>; # Model
-$SAURON_RHF{serial}   = <% @sauron_rhf['serial'] %>; # Serial
-$SAURON_RHF{misc}     = <% @sauron_rhf['misc'] %>; # Misc.
-$SAURON_RHF{email}    = <% @sauron_rhf['email'] %>; # User Email
+$SAURON_RHF{huser}    = <%= @sauron_rhf['user'] %>; # User
+$SAURON_RHF{dept}     = <%= @sauron_rhf['dept'] %>; # Dept.
+$SAURON_RHF{location} = <%= @sauron_rhf['location'] %>; # Location
+$SAURON_RHF{info}     = <%= @sauron_rhf['info'] %>; # [Extra] Info
+$SAURON_RHF{ether}    = <%= @sauron_rhf['ether'] %>; # Ether
+$SAURON_RHF{asset_id} = <%= @sauron_rhf['asset_id'] %>; # Asset ID
+$SAURON_RHF{model}    = <%= @sauron_rhf['model'] %>; # Model
+$SAURON_RHF{serial}   = <%= @sauron_rhf['serial'] %>; # Serial
+$SAURON_RHF{misc}     = <%= @sauron_rhf['misc'] %>; # Misc.
+$SAURON_RHF{email}    = <%= @sauron_rhf['email'] %>; # User Email
 
 # Optional custom restictions for host record fields. 
 # Restrictions can be defined by server and for each
@@ -189,7 +189,7 @@ $SAURON_RHF{email}    = <% @sauron_rhf['email'] %>; # User Email
 #  1 = zone read (write) access is not inherited from server privileges
 #      (user sees only zones she has explicitly given read (write) access)
 <% if @sauron_priviledge_mode -%>
-$SAURON_PRIVILEGE_MODE = <% @sauron_priviledge_mode %>
+$SAURON_PRIVILEGE_MODE = <%= @sauron_priviledge_mode %>
 <% end -%>
 
 # set 1 to use hardcoded DTD instead the one genereated by CGI module
@@ -218,10 +218,10 @@ $SAURON_PRIVILEGE_MODE = <% @sauron_priviledge_mode %>
 # $SAURON_DCHP2_MODE = 1;
 
 <% if @sauron_bgcolor -%>
-$SAURON_BGCOLOR="<% @sauron_bgcolor %>";
+$SAURON_BGCOLOR="<%= @sauron_bgcolor %>";
 <% end -%>
 <% if @sauron_fgcolor -%>
-$SAURON_FGCOLOR="<% @sauron_fgcolor %>";
+$SAURON_FGCOLOR="<%= @sauron_fgcolor %>";
 <% end -%>
 
 # $LOOPBACK_NET = "127.0.0.0/24";
