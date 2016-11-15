@@ -39,14 +39,16 @@ class sauron::params {
   $db_dsn                = 'dbi:Pg:dbname=sauron'
   $db_user               = 'sauron'
   $db_password           = ''
-  
-  $sauron_ping = hiera_hash('sauron::sauron_ping', {
+
+  $sauron_ping = merge ({
     enable    => false,
     prog      => '/bin/ping',
     args      => '-c5',
     timeout   => '15',
     alevel    => '1',
-  })
+  },
+  hiera_hash('sauron::sauron_ping', {})
+  )
 
   $sauron_named_chk = {
     enable => false,
