@@ -30,18 +30,16 @@ class sauron::apache {
 
   $rewrites = [
     {
-      rewrite_cond => ['^/cgi-bin/(.*)'],
-      rewrite_rule => ['/cgi/$1 [last,PT]'],
+      rewrite_rule => ['^/cgi-bin/(.*) /cgi/$1 [last,PT]'],
     },
     {
-      rewrite_cond => ['^/cgi/(.*)'],
-      rewrite_rule => ['/cgi/$1 [last,PT]'],
+      rewrite_rule => ['^/cgi/(.*) /cgi/$1 [last,PT]'],
     },
   ]
 
   # Configure apache
   include ::apache
-  apache::vhost { 'smokeping':
+  apache::vhost { 'sauron':
     servername      => $servername,
     docroot         => $docroot,
     directories     => $directories,
