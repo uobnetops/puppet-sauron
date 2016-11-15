@@ -159,9 +159,9 @@ class sauron (
     info 'postgres - TODO'
   }
 
-  # Configure apache - TODO
+  # Configure apache 
   if ($manage_apache) {
-    info 'apache - TODO'
+    include ::sauron::apache
   }
 
   # Configure SELinux - TODO (manage_selinux defaults to true for RedHat/Fedora)
