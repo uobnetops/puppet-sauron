@@ -40,19 +40,19 @@ class sauron::params {
   $db_user               = 'sauron'
   $db_password           = ''
 
-  sauron_ping_enable    = false
-  sauron_ping_prog      = '/bin/ping'
-  sauron_ping_args      = '-c5'
-  sauron_ping_timeout   = '15'
-  sauron_ping_alevel    = '1'
+  $sauron_ping_enable    = false
+  $sauron_ping_prog      = '/bin/ping'
+  $sauron_ping_args      = '-c5'
+  $sauron_ping_timeout   = '15'
+  $sauron_ping_alevel    = '1'
 
-  sauron_named_chk_enable = false
-  sauron_named_chk_prog   = '/usr/sbin/named-checkconf'
-  sauron_named_chk_args   = ''
+  $sauron_named_chk_enable = false
+  $sauron_named_chk_prog   = '/usr/sbin/named-checkconf'
+  $sauron_named_chk_args   = ''
 
-  sauron_zone_chk_enable = false
-  sauron_zone_chk_prog   = '/usr/sbin/named-checkzone'
-  sauron_zone_chk_args   = '-q'
+  $sauron_zone_chk_enable = false
+  $sauron_zone_chk_prog   = '/usr/sbin/named-checkzone'
+  $sauron_zone_chk_args   = '-q'
 
   $sauron_auth_prog      = '$PROG_DIR/contrib/kerberos-auth'
   $sauron_icon_path      = '/sauron/icons'
