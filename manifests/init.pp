@@ -195,11 +195,11 @@ class sauron (
     name   => $group,
   }
 
-  # Deploy sauron to /usr/share/sauron
-    vcsrepo { '/usr/share/sauron':
+  # Deploy sauron to /usr/local/sauron
+    vcsrepo { '/usr/local/sauron':
     ensure   => latest,
     revision => $version,
-    path     => '/usr/share/sauron',
+    path     => '/usr/local/sauron',
     provider => git,
     source   => 'https://github.com/uobnetops/sauron6.git',
     owner    => $owner,

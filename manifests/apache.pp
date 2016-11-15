@@ -1,7 +1,7 @@
 # Manage Apache config
 class sauron::apache {
 
-  $docroot = '/usr/share/sauron'
+  $docroot = '/usr/local/sauron'
 
   $aliases = [
     {
