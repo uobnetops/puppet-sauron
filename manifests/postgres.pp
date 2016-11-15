@@ -3,7 +3,7 @@ class sauron::postgres {
 
   class { 'postgresql::server':
     ip_mask_deny_postgres_user => '0.0.0.0/0',
-    ip_mask_allow_all_users    => '127.0.0.1',
+    ip_mask_allow_all_users    => '127.0.0.1/32',
     listen_addresses           => '*',
   }
   postgresql::server::db { 'sauron':
