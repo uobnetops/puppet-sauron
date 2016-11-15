@@ -1,6 +1,5 @@
 # Manage Apache config
 class sauron::apache {
-  $servername = $::sauron::servername
 
   $docroot = '/usr/share/sauron'
 
@@ -39,8 +38,8 @@ class sauron::apache {
 
   # Configure apache
   include ::apache
-  apache::vhost { 'sauron':
-    servername      => $servername,
+  apache::vhost { $::sauron::server_name:
+    servername      => $::sauron::server_name,
     docroot         => $docroot,
     directories     => $directories,
     aliases         => $aliases,

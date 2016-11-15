@@ -29,6 +29,7 @@ class sauron::params {
 
   # Apache defaults
   $manage_apache = true
+  $server_name   = ${fqdn}
 
   # Firewall defaults
   $manage_firewall = true
