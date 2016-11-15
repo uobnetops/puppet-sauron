@@ -134,7 +134,7 @@ class sauron (
   $db_dsn                = $sauron::params::db_dsn,
   $db_user               = $sauron::params::db_user,
   $db_password           = $sauron::params::db_password,
-  $sauron_ping           = merge($sauron::params::sauron_ping_defaults, hiera_hash('sauron::sauron_ping', {})),
+  $sauron_ping           = merge($sauron::params::sauron_ping_defaults, hiera_hash('::sauron::sauron_ping', {})),
   $sauron_named_chk      = $sauron::params::sauron_named_chk,
   $sauron_zone_chk       = $sauron::params::sauron_zone_chk,
   $sauron_auth_prog      = $sauron::params::sauron_auth_prog,
@@ -150,7 +150,6 @@ class sauron (
   validate_hash($sauron_ping)
 
   notify {"sauron_ping prog (init.pp): ${sauron_ping[prog]}": }
-  notify {"sauron_ping prog (init.pp, via params): ${sauron::params::sauron_ping[prog]}": }
 
   # Configure postgres - TODO
   if ($manage_postgres) {
