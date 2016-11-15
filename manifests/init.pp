@@ -134,7 +134,7 @@ class sauron (
   $db_dsn                = $sauron::params::db_dsn,
   $db_user               = $sauron::params::db_user,
   $db_password           = $sauron::params::db_password,
-  $sauron_ping           = $sauron::params::sauron_ping,
+  $sauron_ping           = $::sauron::params::sauron_ping,
   $sauron_named_chk      = $sauron::params::sauron_named_chk,
   $sauron_zone_chk       = $sauron::params::sauron_zone_chk,
   $sauron_auth_prog      = $sauron::params::sauron_auth_prog,
