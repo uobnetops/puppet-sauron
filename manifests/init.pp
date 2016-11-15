@@ -223,6 +223,14 @@ class sauron (
     content => template('sauron/config-browser.erb'),
   }
 
+  # Make sure the log directory exists
+  file { $log_dir:
+    ensure => directory,
+    owner  => $owner,
+    group  => $group,
+    mode   => '0755',
+  }
+
   # Install supporting packages, including the optionals if we need them
   package { $perl_deps:
     ensure => installed,
