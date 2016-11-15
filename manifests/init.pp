@@ -161,7 +161,7 @@ class sauron (
 
   # Configure postgres - TODO
   if ($manage_postgres) {
-    info 'postgres - TODO'
+    include ::sauron::postgres
   }
 
   # Configure apache 
