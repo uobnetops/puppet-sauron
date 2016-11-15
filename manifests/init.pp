@@ -171,7 +171,11 @@ class sauron (
 
   # Configure firewall - TODO
   if ($manage_firewall) {
-    info 'firewall - TODO'
+    firewall { '100-sauron-http':
+      proto  => 'tcp',
+      dport  => '80',
+      action => 'accept',
+    }
   }
 
   # Make sure the $owner and $group exist
