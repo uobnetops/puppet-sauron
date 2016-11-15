@@ -147,8 +147,10 @@ class sauron (
   $utils_package         = $sauron::params::utils_package,
 ) inherits ::sauron::params {
 
+  validate_hash($settings)
+
   notify {"sauron_ping prog (init.pp): ${sauron_ping[prog]}": }
-  notify {"sauron_ping prog (init.pp): ${sauron::params::sauron_ping[prog]}": }
+  notify {"sauron_ping prog (init.pp, via params): ${sauron::params::sauron_ping[prog]}": }
 
   # Configure postgres - TODO
   if ($manage_postgres) {
