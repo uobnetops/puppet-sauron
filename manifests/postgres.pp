@@ -13,7 +13,7 @@ class sauron::postgres {
   postgresql::server::role { 'sauron':
     password_hash => postgresql_password($::sauron::db_user, $::sauron::db_password),
   }
-  postgresql::server::database_grant { 'sauron':
+  postgresql::server::database_grant { $::sauron::db_user:
     privilege => 'ALL',
     db        => 'sauron',
     role      => 'sauron',
