@@ -6,22 +6,22 @@ class sauron::params {
     /RedHat|CentOS/: {
       $manage_selinux = true
       $utils_package  = ['bind']
-      $perl_deps      = ['perl-Net-Netmask']
+      $perl_deps      = ['perl-Net-Netmask','perl-Net-IP']
     }
     'Fedora': {
       $manage_selinux = true
       $utils_package  = ['bind']
-      $perl_deps      = ['perl-Net-Netmask']
+      $perl_deps      = ['perl-Net-Netmask','perl-Net-IP']
     }
     'Debian': {
       $manage_selinux = false
       $utils_package  = ['bind9utils']
-      $perl_deps      = ['libnet-netmask-perl']
+      $perl_deps      = ['libnet-netmask-perl','libnet-ip-perl']
     }
     'Ubuntu': {
       $manage_selinux = false
       $utils_package  = ['bind9utils']
-      $perl_deps      = ['libnet-netmask-perl']
+      $perl_deps      = ['libnet-netmask-perl','libnet-ip-perl']
     }
     default: {
       $manage_selinux = false
