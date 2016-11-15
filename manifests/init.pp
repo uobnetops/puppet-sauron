@@ -47,31 +47,30 @@
 # [*db_password*]
 #   database password
 #
-# [*sauron_ping*]
-#   ping command in web interface.  Takes a hash with the following defaults
-#   $sauron_ping = {
-#    enable    = false,        # Default is disable ping in the web interface
-#    prog      = '/bin/ping',  # path to ping
-#    args      = '-c5',        # arguments to pass to ping
-#    timeout   = '15',         # timeout
-#    alevel    = '1',          # user authorization level required for ping
-#  }
+# [*sauron_ping_enable*]
+#   Enable users in the web interface to ping hosts, default to false
+# [*sauron_ping_prog*]
+#   Program to use to ping hosts
+# [*sauron_ping_args*]
+#   Arguments to pass to ping
+# [*sauron_ping_timeout*]
+#   Timeout for pings
+# [*sauron_ping_alevel*]
+#   user authorization level required for ping
 #
-# [*sauron_named_chk*]
-#   Parameters for checking generated named.conf after export
-#   $sauron_named_chk = {
-#     enable => false,                       # Default named-checkconf disabled
-#     prog   => '/usr/sbin/named-checkconf', # path to named-checkconf
-#     args   => '',                          # additional arguments to use
-#   }
+# [*sauron_named_chk_enable*]
+#   Enable named-checkconf behaviour
+# [*sauron_named_chk_prog*]
+#   Path to named-checkconf
+# [*sauron_named_chk_args*]
+#   Parameters for named-checkconf
 #
-# [*sauron_zone_chk*]
-#   Parameters for checking generated zone files after export
-#   $sauron_zone_chk = {
-#     enable => false,                       # Default named-checkzone disabled
-#     prog   => '/usr/sbin/named-checkzone', # path to named-checkzone
-#     args   => '-q',                        # additional arguments to use
-#   }
+# [*sauron_zone_chk_enable*]
+#   Enable named-checkzone behaviour
+# [*sauron_zone_chk_prog*]
+#   Path to named-checkzone
+# [*sauron_zone_chk_args*]
+#   Parameters for named-checkzone
 #
 # [*sauron_auth_prog*]
 #   Path to an external authentication program, if required
@@ -122,35 +121,38 @@
 # Copyright 2016 University of Bristol
 #
 class sauron (
-  $manage_postgres       = $sauron::params::manage_postgres,
-  $manage_apache         = $sauron::params::manage_apache,
-  $manage_selinux        = $sauron::params::manage_selinux,
-  $manage_firewall       = $sauron::params::manage_firewall,
-  $owner                 = 'sauron',
-  $group                 = 'sauron',
-  $version               = 'v0.7.4-uob',
-  $log_dir               = $sauron::params::log_dir,
-  $server_id             = $sauron::params::server_id,
-  $db_dsn                = $sauron::params::db_dsn,
-  $db_user               = $sauron::params::db_user,
-  $db_password           = $sauron::params::db_password,
-  $sauron_named_chk      = $sauron::params::sauron_named_chk,
-  $sauron_zone_chk       = $sauron::params::sauron_zone_chk,
-  $sauron_auth_prog      = $sauron::params::sauron_auth_prog,
-  $sauron_icon_path      = $sauron::params::sauron_icon_path,
-  $sauron_user_timeout   = $sauron::params::sauron_user_timeout,
-  $sauron_privilege_mode = $sauron::params::sauron_privilege_mode,
-  $sauron_fgcolor        = $sauron::params::sauron_fgcolor,
-  $sauron_bgcolor        = $sauron::params::sauron_bgcolor,
-  $sauron_rhf            = $sauron::params::sauron_rhf,
-  $utils_package         = $sauron::params::utils_package,
+  $manage_postgres         = $sauron::params::manage_postgres,
+  $manage_apache           = $sauron::params::manage_apache,
+  $manage_selinux          = $sauron::params::manage_selinux,
+  $manage_firewall         = $sauron::params::manage_firewall,
+  $owner                   = 'sauron',
+  $group                   = 'sauron',
+  $version                 = 'v0.7.4-uob',
+  $log_dir                 = $sauron::params::log_dir,
+  $server_id               = $sauron::params::server_id,
+  $db_dsn                  = $sauron::params::db_dsn,
+  $db_user                 = $sauron::params::db_user,
+  $db_password             = $sauron::params::db_password,
+  $sauron_ping_enable      = $sauron::params::sauron_ping_enable,
+  $sauron_ping_prog        = $sauron::params::sauron_ping_prog,
+  $sauron_ping_args        = $sauron::params::sauron_ping_args,
+  $sauron_ping_timeout     = $sauron::params::sauron_ping_timeout,
+  $sauron_ping_alevel      = $sauron::params::sauron_ping_alevel,
+  $sauron_named_chk_enable = $sauron::params::sauron_named_chk_enable,
+  $sauron_named_chk_prog   = $sauron::params::sauron_named_chk_prog,
+  $sauron_named_chk_args   = $sauron::params::sauron_named_chk_args,
+  $sauron_zone_chk_enable  = $sauron::params::sauron_zone_chk_enable,
+  $sauron_zone_chk_prog    = $sauron::params::sauron_zone_chk_prog,
+  $sauron_zone_chk_args    = $sauron::params::sauron_zone_chk_args,
+  $sauron_auth_prog        = $sauron::params::sauron_auth_prog,
+  $sauron_icon_path        = $sauron::params::sauron_icon_path,
+  $sauron_user_timeout     = $sauron::params::sauron_user_timeout,
+  $sauron_privilege_mode   = $sauron::params::sauron_privilege_mode,
+  $sauron_fgcolor          = $sauron::params::sauron_fgcolor,
+  $sauron_bgcolor          = $sauron::params::sauron_bgcolor,
+  $sauron_rhf              = $sauron::params::sauron_rhf,
+  $utils_package           = $sauron::params::utils_package,
 ) inherits ::sauron::params {
-
-  $sauron_ping           = merge($sauron::params::sauron_ping_defaults, hiera_hash('::sauron::sauron_ping', {}))
-
-  validate_hash($sauron_ping)
-
-  notify {"sauron_ping prog (init.pp): ${sauron_ping[prog]}": }
 
   # Configure postgres - TODO
   if ($manage_postgres) {
