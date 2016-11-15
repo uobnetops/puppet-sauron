@@ -20,10 +20,11 @@ class sauron::apache {
 
   $directories = [
     {
-      'path'     => "${docroot}/cgi",
-      'options'  => '+ExecCGI -MultiViews +SymlinksIfOwnerMatch',
-      'override' => 'None',
-      'order'    => 'Deny,Allow'
+      'path'       => "${docroot}/cgi",
+      'options'    => '+ExecCGI -MultiViews +SymlinksIfOwnerMatch',
+      'sethandler' => 'cgi-script',
+      'override'   => 'None',
+      'order'      => 'Deny,Allow'
     },
   ]
 
