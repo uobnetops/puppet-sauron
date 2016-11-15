@@ -47,5 +47,7 @@ class sauron::apache {
     rewrites        => $rewrites,
     directoryindex  => '',
     custom_fragment => "SuexecUserGroup ${::sauron::owner} ${::sauron::group}",
+    docroot_owner   => $::sauron::owner,
+    docroot_group   => $::sauron::group,
   }
 }
