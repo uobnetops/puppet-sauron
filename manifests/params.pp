@@ -40,13 +40,13 @@ class sauron::params {
   $db_user               = 'sauron'
   $db_password           = ''
   
-  $sauron_ping = {
+  $sauron_ping = hiera_hash('sauron_ping', {
     enable    => false,
     prog      => '/bin/ping',
     args      => '-c5',
     timeout   => '15',
     alevel    => '1',
-  }
+  })
 
   $sauron_named_chk = {
     enable => false,
