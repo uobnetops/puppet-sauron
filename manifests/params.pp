@@ -6,18 +6,22 @@ class sauron::params {
     /RedHat|CentOS/: {
       $manage_selinux = true
       $utils_package  = ['bind']
+      $perl_deps      = ['perl-Net-Netmask']
     }
     'Fedora': {
       $manage_selinux = true
       $utils_package  = ['bind']
+      $perl_deps      = ['perl-Net-Netmask']
     }
     'Debian': {
       $manage_selinux = false
       $utils_package  = ['bind9utils']
+      $perl_deps      = ['libnet-netmask-perl']
     }
     'Ubuntu': {
       $manage_selinux = false
       $utils_package  = ['bind9utils']
+      $perl_deps      = ['libnet-netmask-perl']
     }
     default: {
       $manage_selinux = false
@@ -29,7 +33,7 @@ class sauron::params {
 
   # Apache defaults
   $manage_apache = true
-  $server_name   = $fqdn
+  $server_name   = $::fqdn
 
   # Firewall defaults
   $manage_firewall = true

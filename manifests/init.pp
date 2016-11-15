@@ -155,6 +155,7 @@ class sauron (
   $sauron_fgcolor          = $sauron::params::sauron_fgcolor,
   $sauron_bgcolor          = $sauron::params::sauron_bgcolor,
   $sauron_rhf              = $sauron::params::sauron_rhf,
+  $perl_deps               = $sauron::params::perl_deps,
   $utils_package           = $sauron::params::utils_package,
 ) inherits ::sauron::params {
 
@@ -222,10 +223,14 @@ class sauron (
     content => template('sauron/config-browser.erb'),
   }
 
-  # Install supporting packages, if we need them
+  # Install supporting packages, including the optionals if we need them
+  package { $perl_deps:
+    ensure => installed,
+  }
+
   if ($sauron_named_chk_enable or $sauron_zone_chk_enable) {
     package { $utils_package:
-      ensure => latest,
+      ensure => installed,
     }
   }
 }
