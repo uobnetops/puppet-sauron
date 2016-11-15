@@ -147,6 +147,8 @@ class sauron (
   $utils_package         = $sauron::params::utils_package,
 ) inherits ::sauron::params {
 
+  notify {"sauron_ping prog: ${sauron_ping[prog]}": }
+
   # Configure postgres - TODO
   if ($manage_postgres) {
     info "postgres - TODO"
