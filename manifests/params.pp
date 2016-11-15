@@ -50,9 +50,9 @@ class sauron::params {
   $sauron_ping_hiera = hiera_hash('sauron::sauron_ping', {})
   $sauron_ping = merge($sauron_ping_default, $sauron_ping_hiera)
 
-  notify {'sauron_ping_default: $sauron_ping_default::enable': }
-  notify {'sauron_ping_hiera: $sauron_ping_hiera::enable': }
-  notify {'sauron_ping: $sauron_ping::enable': }
+  notify {"sauron_ping_default: ${sauron_ping_default::enable}": }
+  notify {"sauron_ping_hiera: ${sauron_ping_hiera::enable}": }
+  notify {"sauron_ping: ${sauron_ping::enable}": }
 
 
   $sauron_named_chk = {
