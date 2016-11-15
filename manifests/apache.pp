@@ -52,5 +52,5 @@ class sauron::apache {
   }
 
   # Force load mod_suexec
-  apache::mod { 'mod_suexec': }
+  apache::mod { 'suexec': }
 }
