@@ -156,22 +156,22 @@ class sauron (
 
   # Configure postgres - TODO
   if ($manage_postgres) {
-    info "postgres - TODO"
+    info 'postgres - TODO'
   }
 
   # Configure apache - TODO
   if ($manage_apache) {
-    info "apache - TODO"
+    info 'apache - TODO'
   }
 
   # Configure SELinux - TODO (manage_selinux defaults to true for RedHat/Fedora)
   if ($manage_selinux) {
-    info "selinux - TODO"
+    info 'selinux - TODO'
   }
 
   # Configure firewall - TODO
   if ($manage_firewall) {
-    info "firewall - TODO"
+    info 'firewall - TODO'
   }
 
   # Make sure the $owner and $group exist
@@ -215,7 +215,7 @@ class sauron (
   }
 
   # Install supporting packages, if we need them
-  if ($sauron_named_chk[enable] or $sauron_zone_chk[enable]) {
+  if ($sauron_named_chk_enable or $sauron_zone_chk_enable) {
     package { $utils_package:
       ensure => latest,
     }
