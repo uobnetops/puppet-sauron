@@ -50,7 +50,4 @@ class sauron::apache {
     docroot_owner   => $::sauron::owner,
     docroot_group   => $::sauron::group,
   }
-
-  # Force load mod_suexec
-  apache::mod { 'suexec': }
 }
