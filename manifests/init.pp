@@ -205,7 +205,6 @@ class sauron (
     ensure => link,
     target => '/var/www/sauron',
   }
-}
 
   # Make sure the config directory exists
   file { '/etc/sauron':
