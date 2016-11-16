@@ -208,7 +208,7 @@ class sauron (
 
   # hard link the cgi directory to /var/www/cgi so that suexec will work
   exec { "hardlink-sauron-cgi":
-    command => "ln /var/www/cgi /usr/local/sauron/cgi",
+    command => "ln /usr/local/sauron/cgi /var/www/cgi",
     path    => "/usr/local/bin:/bin",
     creates => "/var/www/cgi"
 }
