@@ -206,11 +206,12 @@ class sauron (
     group    => $group,
   }
 
-  # SymLink the cgi directory to /var/www/cgi so that suexec will work
-  file { '/var/www/cgi':
-    ensure => 'link',
-    target => '/usr/local/sauron/cgi',
-  }
+  # hard link the cgi directory to /var/www/cgi so that suexec will work
+  exec { "hardlink-sauron-cgi":
+    command => "ln /var/www/cgi /usr/local/sauron/cgi",
+    path    => "/usr/local/bin:/bin",
+    creates => "/var/www/cgi"
+}
 
   # Make sure the config directory exists
   file { '/etc/sauron':
