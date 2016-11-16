@@ -206,6 +206,12 @@ class sauron (
     group    => $group,
   }
 
+  # SymLink the cgi directory to /var/www/cgi so that suexec will work
+  file { '/var/www/cgi':
+    ensure => 'link',
+    target => '/usr/local/sauron/cgi',
+  }
+
   # Make sure the config directory exists
   file { '/etc/sauron':
     ensure => directory,
