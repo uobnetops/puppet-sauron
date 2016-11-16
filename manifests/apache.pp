@@ -1,7 +1,7 @@
 # Manage Apache config
 class sauron::apache {
 
-  $docroot = '/var/www'
+  $docroot = '/var/www/sauron'
 
   $aliases = [
     {
