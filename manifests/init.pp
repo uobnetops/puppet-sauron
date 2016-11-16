@@ -165,7 +165,7 @@ class sauron (
 
   # Configure SELinux - TODO (manage_selinux defaults to true for RedHat/Fedora)
   if ($manage_selinux) {
-    info 'selinux - TODO'
+    selinux::boolean { 'httpd_unified': }
   }
 
   # Configure firewall - TODO
