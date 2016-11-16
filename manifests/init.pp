@@ -109,12 +109,6 @@
 #    email    => '1',
 #  }
 #
-# === Examples
-#
-#  class { 'sauron':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
-#
 # === Authors
 #
 # Paul Seward <paul.seward@bristol.ac.uk>
@@ -195,22 +189,22 @@ class sauron (
     name   => $group,
   }
 
-  # Deploy sauron to /usr/local/sauron
-    vcsrepo { '/usr/local/sauron':
+  # Deploy sauron to /var/www/sauron so suexec works
+    vcsrepo { '/var/www/sauron':
     ensure   => latest,
     revision => $version,
-    path     => '/usr/local/sauron',
+    path     => '/var/www/sauron',
     provider => git,
     source   => 'https://github.com/uobnetops/sauron6.git',
     owner    => $owner,
     group    => $group,
   }
 
-  # hard link the cgi directory to /var/www/cgi so that suexec will work
-  exec { "hardlink-sauron-cgi":
-    command => "ln /usr/local/sauron/cgi /var/www/cgi",
-    path    => "/usr/local/bin:/bin",
-    creates => "/var/www/cgi"
+  # symlink to /usr/local/sauron so that the include paths in the CGI's work
+  file { '/usr/local/sauron':
+    ensure => link,
+    target => '/var/www/sauron',
+  }
 }
 
   # Make sure the config directory exists
